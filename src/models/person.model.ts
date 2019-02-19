@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import {City} from './city.model';
 
 @model()
 export class Person extends Entity {
@@ -20,6 +21,8 @@ export class Person extends Entity {
   })
   age?: number;
 
+  @belongsTo(() => City) //Creating a relation belongsTo with the City model
+  bornCity: string;
 
   constructor(data?: Partial<Person>) {
     super(data);
