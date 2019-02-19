@@ -1,0 +1,10 @@
+{
+  "name": "mongodatabase",
+  "connector": "mongodb",
+  "url": "mongodb://nancy:1234@cluster0-shard-00-00-woq8t.mongodb.net:27017,cluster0-shard-00-01-woq8t.mongodb.net:27017,cluster0-shard-00-02-woq8t.mongodb.net:27017/mundo?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true",
+  "host": "cluster0-shard-00-00-woq8t.mongodb.net",
+  "port": 27017,
+  "user": "nancy",
+  "password": "1234",
+  "database": "mundo"
+}
