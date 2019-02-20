@@ -5,7 +5,6 @@ import {
   repository,
 } from '@loopback/repository';
 import {Person, City} from '../models';
-import {MongodatabaseDataSource} from '../datasources';
 import {inject, Getter} from '@loopback/core';
 import {CityRepository} from '../repositories';
 
@@ -15,12 +14,14 @@ export class PersonRepository extends DefaultCrudRepository<
 > {
   public readonly city: BelongsToAccessor<City, typeof Person.prototype.id>;
   constructor(
-    @inject('datasources.mongodatabase') dataSource: MongodatabaseDataSource,
-    @inject('datasources.db') protected db: juggler.DataSource,
+    @inject('datasources.mongodatabase') protected db: juggler.DataSource,
     @repository.getter('CustomerRepository')
     cityRepositoryGetter: Getter<CityRepository>,
   ) {
-    super(Person, dataSource);
-    this.city = this.createBelongsToAccessorFor('city', cityRepositoryGetter);
+    super(Person, db);
+    this.city = this.createBelongsToAccessorFor(
+      'bornCity',
+      cityRepositoryGetter,
+    );
   }
 }

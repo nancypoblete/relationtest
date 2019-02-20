@@ -14,14 +14,14 @@ export class Person extends Entity {
     type: 'string',
     required: true,
   })
-  full_name: string;
+  fullName: string;
 
   @property({
     type: 'number',
   })
   age?: number;
 
-  @belongsTo(() => City) //Creating a relation belongsTo with the City model
+  @belongsTo(() => City, {keyTo: 'name'}) //Creating a relation belongsTo with the City model
   bornCity: string;
 
   constructor(data?: Partial<Person>) {
